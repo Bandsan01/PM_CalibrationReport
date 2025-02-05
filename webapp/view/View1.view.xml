@@ -1,0 +1,151 @@
+<mvc:View controllerName="com.app.zicaliclndr.controller.View1"
+   xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core" xmlns:core="sap.ui.core" 
+	xmlns:m="sap.m">
+    <!-- <m:Page
+		showHeader="false"
+		enableScrolling="true"
+		class="sapUiContentPadding">
+		<m:content> -->
+			<Table id="ID_TBL" width="100%" 
+				showNoData="true"
+				rows = "{calData>/}"
+				selectionMode="None"
+				visibleRowCountMode="Auto"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title" text="{i18n>title}"/>
+                        <m:ToolbarSpacer/>
+                          <m:Label text="Plant" labelFor="stickyModeSelect" />
+				<m:Select change="onChange" items="{F4Data>/}">
+					<core:ListItem text="{F4Data>Plant}" key="{F4Data>Plant}" />
+				</m:Select>
+									<m:ToolbarSpacer/>
+									<m:Label text="Date Range" labelFor="stickyModeSelect" />
+                                    
+					<m:DateRangeSelection width="250px"
+			value= "{
+				'type': 'sap.ui.model.type.DateInterval',
+				'formatOptions': {
+					'pattern': 'dd MMM yyyy'
+				},
+				'parts': [
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'view>/startDate'
+					},
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'view>/endDate'
+					}
+				]
+			}"
+			change="handleChange"/>
+					<m:Button icon="sap-icon://excel-attachment" press="onExport"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+				<Column width="11rem">
+						<m:Label text="{i18n>maintPlan}" />
+						<template>
+							<m:Label text="{calData>Warpl}"/>
+						</template>
+					</Column>
+					<Column width="14rem">
+						<m:Label text="{i18n>maintPlanDesc}" />
+						<template>
+							<m:Label text="{calData>Maintplandesc}"/>
+						</template>
+					</Column>
+				<Column width="11rem">
+						<m:Label text="{i18n>eqpNum}" />
+						<template>
+							<m:Label text="{calData>Equnr}"/>
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="{i18n>eqpDesc}" />
+						<template>
+							<m:Label text="{calData>Equipmentdescription}"/>
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="{i18n>spec}" />
+						<template>
+							<m:Label text="{calData>Groes}" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="{i18n>manfr}" />
+						<template>
+							<m:Label text="{calData>Herst}" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="{i18n>mdlNum}" />
+						<template>
+							<m:Label text="{calData>Typbz}" />
+						</template>
+					</Column>
+						<Column width="11rem">
+						<m:Label text="{i18n>fnLoc}" />
+						<template>
+							<m:Label text="{calData>Tplnr}" />
+						</template>
+					</Column>
+					<Column width="14rem">
+						<m:Label text="{i18n>eqipSys}" />
+						<template>
+							<m:Text text="{calData>Equipsysat}" wrapping="false" />
+						</template>
+					 </Column>
+					 <Column width="11rem">
+						<m:Label text="{i18n>quipUserSts}" />
+						<template>
+							<m:Text text="{calData>EquipUstat}" wrapping="false" />
+						</template>
+					 </Column>
+						<Column width="11rem">
+						<m:Label text="{i18n>lcalDate}" />
+						<template>
+								<m:Text text="{
+								path: 'calData>Lastcaldate'
+							}" wrapping="false" />
+						</template>
+					</Column>
+										 <Column width="11rem">
+						<m:Label text="{i18n>calDueDate}" />
+						<template>
+							<m:Label text="{calData>Nplda}" />
+						</template>
+					</Column> 
+						 <Column width="11rem">
+						<m:Label text="{i18n>insFreq}" />
+						<template>
+							<m:Label text="{calData>Frequency} {calData>Zeieh}" />
+						</template>
+					</Column> 
+					<Column width="11rem">
+						<m:Label text="{i18n>wrkOrdrnum}" />
+						<template>
+							<m:Label text="{calData>Laufn}" />
+						</template>
+					</Column>				
+						 <Column width="11rem">
+						<m:Label text="{i18n>wrkordrStatus}" />
+						<template>
+								<m:Label text="{calData>Longdesc}" />
+						</template>
+					</Column> 
+
+				</columns>
+			</Table>
+		<!-- </m:content>
+          </m:Page> -->
+    <!-- <Page id="page" title="{i18n>title}">
+        <content />
+    </Page> -->
+</mvc:View>
