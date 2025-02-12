@@ -30,7 +30,7 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
             oModelF4.read(entity, {
                 method: "GET",
                 success: function (oData) {
-                    that.selectedPlant = oData.results[0].Plant;
+                    that.selectedPlant = "";
                     var f4Model = new JSONModel([]);
                     f4Model.setData(oData.results);
                     that.getView().setModel(f4Model, "F4Data");
@@ -69,6 +69,7 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
 					for (var i = 0; i < oData.results.length; i++) {
 						oData.results[i].Nplda = dateFormat.format(oData.results[i].Nplda);
 						oData.results[i].Lastcaldate = dateFormat.format(oData.results[i].Lastcaldate);
+						oData.results[i].freq = oData.results[i].Frequency.concat(" ", oData.results[i].Zeieh);
 					}
 					busyDialog.close();
 					that.calModel = new JSONModel([]);
@@ -91,6 +92,23 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
 			this.selectedPlant = evt.oSource.getSelectedKey();
 			this.getdetails(this.firstday, this.lastday);
 		},
+		//Navigate to Display Order App
+		onLinkCRPress : function(oEvent){
+			const workOrdrNum = this.getView().getModel("calData").getProperty("Laufn", oEvent.getSource().getBindingContext("calData"));
+			var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+			if (sap.ushell && sap.ushell.Container && sap.ushell.Container.getService) {
+				oCrossAppNavigator.toExternal({
+					target: {
+						semanticObject: "ZSEM_PM_ODRDSPLY",
+						action: "display"
+					},
+					params: {
+						"OrderNo": workOrdrNum,
+					}
+				});
+			}
+		},
+
         onExport: function() {
 			var aCols, oSettings, oSheet;
            var data = this.getView().getModel("calData").getData();
@@ -118,7 +136,25 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
 		},
  
 		_createColumnConfig: function () {
-			return [{
+			return [
+				{
+                	label: "Maintenance Plan",
+                	property: "Warpl",
+                	//type: EdmType.String,
+                	scale: 0
+                },
+                {
+                	label: "Maintenance Item",
+                	property: "Wapos",
+                	//type: EdmType.String,
+                	scale: 0
+                },
+                {
+                	label: "Maintenance Plan Desc",
+                	property: "Maintplandesc",
+                	//type: EdmType.String,
+                	scale: 0
+                },{
 				label: "Equipment Number",
 				property: "Equnr",
 				//type: EdmType.String,
@@ -175,7 +211,7 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
             },
 			{
 				label: "Calibation Frequency",
-				property: "Frequency",
+				property: "freq",
 				//type: EdmType.String,
 				scale: 0
 			},

@@ -20,9 +20,9 @@
 						<m:Title id="title" text="{i18n>title}"/>
                         <m:ToolbarSpacer/>
                           <m:Label text="Plant" labelFor="stickyModeSelect" />
-				<m:Select change="onChange" items="{F4Data>/}">
+				<m:ComboBox change="onChange" items="{F4Data>/}">
 					<core:ListItem text="{F4Data>Plant}" key="{F4Data>Plant}" />
-				</m:Select>
+				</m:ComboBox>
 									<m:ToolbarSpacer/>
 									<m:Label text="Date Range" labelFor="stickyModeSelect" />
                                     
@@ -52,6 +52,12 @@
 						<m:Label text="{i18n>maintPlan}" />
 						<template>
 							<m:Label text="{calData>Warpl}"/>
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="{i18n>maintItm}" />
+						<template>
+							<m:Label text="{calData>Wapos}"/>
 						</template>
 					</Column>
 					<Column width="14rem">
@@ -131,7 +137,7 @@
 					<Column width="11rem">
 						<m:Label text="{i18n>wrkOrdrnum}" />
 						<template>
-							<m:Label text="{calData>Laufn}" />
+							<m:Button text="{calData>Laufn}" press="onLinkCRPress" />
 						</template>
 					</Column>				
 						 <Column width="11rem">
