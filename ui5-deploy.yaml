@@ -21,6 +21,6 @@ builder:
           name: ZUI_PM_CALBCL
           description: List view of calibration calendar
           package: ZPM_FIORI
-          transport: DGWK900948
+          transport: DGWK900989
         exclude:
           - /test/
