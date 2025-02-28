@@ -13,6 +13,8 @@
 				showNoData="true"
 				rows = "{calData>/}"
 				selectionMode="None"
+				enableCellFilter="true"
+				enableColumnFreeze="true"
 				visibleRowCountMode="Auto"
 				ariaLabelledBy="title">
 				<extension>
@@ -48,73 +50,79 @@
 					</m:OverflowToolbar>
 				</extension>
 				<columns>
-				<Column width="11rem">
+				<Column width="11rem" sortProperty="Warpl" filterProperty="Warpl">
 						<m:Label text="{i18n>maintPlan}" />
 						<template>
 							<m:Label text="{calData>Warpl}"/>
 						</template>
 					</Column>
-					<Column width="11rem">
+					<Column width="11rem" sortProperty="Wapos" filterProperty="Wapos">
 						<m:Label text="{i18n>maintItm}" />
 						<template>
 							<m:Label text="{calData>Wapos}"/>
 						</template>
 					</Column>
-					<Column width="14rem">
+					<Column width="14rem" sortProperty="Maintplandesc" filterProperty="Maintplandesc">
 						<m:Label text="{i18n>maintPlanDesc}" />
 						<template>
 							<m:Label text="{calData>Maintplandesc}"/>
 						</template>
 					</Column>
-				<Column width="11rem">
+					<Column width="10rem" sortProperty="Iwerk" filterProperty="Iwerk">
+						<m:Label text="{i18n>plant}" />
+						<template>
+							<m:Label text="{calData>Iwerk}"/>
+						</template>
+					</Column>
+				<Column width="11rem" sortProperty="Equnr" filterProperty="Equnr">
 						<m:Label text="{i18n>eqpNum}" />
 						<template>
 							<m:Label text="{calData>Equnr}"/>
 						</template>
 					</Column>
-					<Column width="11rem">
+					<Column width="11rem" sortProperty="Equipmentdescription" filterProperty="Equipmentdescription">
 						<m:Label text="{i18n>eqpDesc}" />
 						<template>
 							<m:Label text="{calData>Equipmentdescription}"/>
 						</template>
 					</Column>
-					<Column width="11rem">
+					<Column width="11rem" sortProperty="Groes" filterProperty="Groes">
 						<m:Label text="{i18n>spec}" />
 						<template>
 							<m:Label text="{calData>Groes}" />
 						</template>
 					</Column>
-					<Column width="11rem">
+					<Column width="11rem" sortProperty="Herst" filterProperty="Herst">
 						<m:Label text="{i18n>manfr}" />
 						<template>
 							<m:Label text="{calData>Herst}" />
 						</template>
 					</Column>
-					<Column width="11rem">
+					<Column width="11rem" sortProperty="Typbz" filterProperty="Typbz">
 						<m:Label text="{i18n>mdlNum}" />
 						<template>
 							<m:Label text="{calData>Typbz}" />
 						</template>
 					</Column>
-						<Column width="11rem">
+						<Column width="11rem" sortProperty="Tplnr" filterProperty="Tplnr">
 						<m:Label text="{i18n>fnLoc}" />
 						<template>
 							<m:Label text="{calData>Tplnr}" />
 						</template>
 					</Column>
-					<Column width="14rem">
+					<Column width="14rem" sortProperty="Equipsysat" filterProperty="Equipsysat">
 						<m:Label text="{i18n>eqipSys}" />
 						<template>
 							<m:Text text="{calData>Equipsysat}" wrapping="false" />
 						</template>
 					 </Column>
-					 <Column width="11rem">
+					 <Column width="11rem" sortProperty="quipUserSts" filterProperty="quipUserSts">
 						<m:Label text="{i18n>quipUserSts}" />
 						<template>
 							<m:Text text="{calData>EquipUstat}" wrapping="false" />
 						</template>
 					 </Column>
-						<Column width="11rem">
+						<Column width="18rem" sortProperty="Lastcaldate" filterProperty="Lastcaldate">
 						<m:Label text="{i18n>lcalDate}" />
 						<template>
 								<m:Text text="{
@@ -122,31 +130,36 @@
 							}" wrapping="false" />
 						</template>
 					</Column>
-										 <Column width="11rem">
+										 <Column width="18rem" sortProperty="Nplda" filterProperty="Nplda">
 						<m:Label text="{i18n>calDueDate}" />
 						<template>
 							<m:Label text="{calData>Nplda}" />
 						</template>
 					</Column> 
-						 <Column width="11rem">
+						 <Column width="11rem" sortProperty="Frequency" filterProperty="Frequency">
 						<m:Label text="{i18n>insFreq}" />
 						<template>
 							<m:Label text="{calData>Frequency} {calData>Zeieh}" />
 						</template>
 					</Column> 
-					<Column width="11rem">
+					<Column width="11rem" sortProperty="Laufn" filterProperty="Laufn">
 						<m:Label text="{i18n>wrkOrdrnum}" />
 						<template>
-							<m:Button text="{calData>Laufn}" press="onLinkCRPress" />
+							<m:Link text="{calData>Laufn}" press="onLinkCRPress" />
 						</template>
 					</Column>				
-						 <Column width="11rem">
+						 <Column width="15rem" sortProperty="Longdesc" filterProperty="Longdesc">
 						<m:Label text="{i18n>wrkordrStatus}" />
 						<template>
 								<m:Label text="{calData>Longdesc}" />
 						</template>
 					</Column> 
-
+ <Column width="18rem" sortProperty="TecoDate" filterProperty="TecoDate">
+						<m:Label text="{i18n>wordTeco}" />
+						<template>
+								<m:Label text="{calData>TecoDate}" />
+						</template>
+					</Column>
 				</columns>
 			</Table>
 		<!-- </m:content>

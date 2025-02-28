@@ -64,11 +64,12 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
 				"async": true,
 				"success": function (oData) {
 					const dateFormat = sap.ui.core.format.DateFormat.getDateInstance({
-						pattern: "d MMM y"
+						pattern: "yyyy.MM.dd"
 					});
 					for (var i = 0; i < oData.results.length; i++) {
 						oData.results[i].Nplda = dateFormat.format(oData.results[i].Nplda);
 						oData.results[i].Lastcaldate = dateFormat.format(oData.results[i].Lastcaldate);
+						oData.results[i].TecoDate = dateFormat.format(oData.results[i].TecoDate);
 						oData.results[i].freq = oData.results[i].Frequency.concat(" ", oData.results[i].Zeieh);
 					}
 					busyDialog.close();
@@ -138,7 +139,7 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
 		_createColumnConfig: function () {
 			return [
 				{
-                	label: "Maintenance Plan",
+                	label: "Calibration Plan",
                 	property: "Warpl",
                 	//type: EdmType.String,
                 	scale: 0
@@ -152,6 +153,12 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
                 {
                 	label: "Maintenance Plan Desc",
                 	property: "Maintplandesc",
+                	//type: EdmType.String,
+                	scale: 0
+                },
+				{
+                	label: "Plant",
+                	property: "Iwerk",
                 	//type: EdmType.String,
                 	scale: 0
                 },{
@@ -224,6 +231,12 @@ function (Controller,JSONModel, exportLibrary, Spreadsheet, MessageBox,MessageTo
 			{
 				label: "Work Order Status",
 				property: "Longdesc",
+				//type: EdmType.String,
+				scale: 0
+			},
+			{
+				label: "Work Order TECO",
+				property: "TecoDate",
 				//type: EdmType.String,
 				scale: 0
 			}
